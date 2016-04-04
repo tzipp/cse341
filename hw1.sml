@@ -7,4 +7,16 @@ fun is_older (date1: int*int*int, date2: int*int*int) =
             then true
             else false
 
+fun number_in_month(dates:(int*int*int) list, month:int) =
+  let fun loop(dates:(int*int*int) list, count:int) =
+          if null dates
+          then count
+          else
+              if (#2 (hd dates)) = month
+              then loop(tl dates, count+1)
+              else loop(tl dates, count)
+  in
+      loop(dates, 0)
+  end
+
 
