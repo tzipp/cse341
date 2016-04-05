@@ -19,4 +19,15 @@ fun number_in_month(dates:(int*int*int) list, month:int) =
       loop(dates, 0)
   end
 
-
+fun get_nth (ss: string list, n: int) =
+  let fun loop(ss: string list, count: int) =
+    if null ss
+    then "Not found or empty!"
+    else
+        if count=n
+        then hd ss
+        else
+            loop(tl ss, count+1)
+  in
+      loop(ss, 1)
+  end
