@@ -1,3 +1,4 @@
+(* Exercise 1 *)
 fun is_older (date1: int*int*int, date2: int*int*int) =
   if (#3 date1) < (#3 date2)
   then true
@@ -7,6 +8,7 @@ fun is_older (date1: int*int*int, date2: int*int*int) =
             then true
             else false
 
+(* Exercise 2 *)
 fun number_in_month(dates:(int*int*int) list, month:int) =
   let fun loop(dates:(int*int*int) list, count:int) =
           if null dates
@@ -19,6 +21,7 @@ fun number_in_month(dates:(int*int*int) list, month:int) =
       loop(dates, 0)
   end
 
+(* Exercise 3 *)
 fun number_in_months (dates: (int*int*int) list, months: int list) =
   let fun loop(months: int list, count: int) =
     if null months
@@ -29,6 +32,7 @@ fun number_in_months (dates: (int*int*int) list, months: int list) =
       loop(months, 0)
   end
 
+(* Exercise 5 *)
 fun get_nth (ss: string list, n: int) =
   let fun loop(ss: string list, count: int) =
     if null ss
