@@ -19,6 +19,16 @@ fun number_in_month(dates:(int*int*int) list, month:int) =
       loop(dates, 0)
   end
 
+fun number_in_months (dates: (int*int*int) list, months: int list) =
+  let fun loop(months: int list, count: int) =
+    if null months
+    then count
+    else
+         loop(tl months, count + number_in_month(dates, hd months))
+  in
+      loop(months, 0)
+  end
+
 fun get_nth (ss: string list, n: int) =
   let fun loop(ss: string list, count: int) =
     if null ss
@@ -31,3 +41,5 @@ fun get_nth (ss: string list, n: int) =
   in
       loop(ss, 1)
   end
+
+
