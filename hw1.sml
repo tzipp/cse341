@@ -36,7 +36,7 @@ fun number_in_months (dates: (int*int*int) list, months: int list) =
       loop(months, 0)
   end
 
-(* Exercise 5 *)
+(* Exercise 6 *)
 (* Returns the nth string in a list of strings. *)
 fun get_nth (ss: string list, n: int) =
   let fun loop(ss: string list, count: int) =
@@ -51,4 +51,14 @@ fun get_nth (ss: string list, n: int) =
       loop(ss, 1)
   end
 
+(* Exercise 7 *)
+(* Converts a date to a string *)
+fun date_to_string (date: (int*int*int)) =
+  let val month_names = ["January", "February", "March", "April", "May", "June",
+                   "July", "August", "September", "October", "November", "December"]
 
+      val month = get_nth(month_names, #2 date)
+      val date_str = month ^ "-" ^ Int.toString(#1 date) ^ "-" ^ Int.toString(#3
+      date)
+  in date_str
+  end
