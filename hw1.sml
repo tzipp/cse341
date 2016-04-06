@@ -36,9 +36,20 @@ fun number_in_months (dates: (int*int*int) list, months: int list) =
       loop(months, 0)
   end
 
+(* Accessory function *)
+(* Reverses a given list. *)
+fun reverse(lst: 'a list) =
+  let fun loop(lst: 'a list, out: 'a list) =
+    if null lst
+    then out
+    else loop(tl lst, (hd lst)::out)
+  in
+    loop(lst, [])
+  end
+
 (* Exercise 4 *)
 (* Takes a list of dates and a month and returns a list of dates containing that month.
- * Dates are returned in the order provided. *)
+ * Dates are returned in the order provided. *) 
 fun dates_in_month (dates: (int*int*int) list, month: int) = 
   let fun loop(dates: (int*int*int) list, matches: (int*int*int) list) =
          if null dates
