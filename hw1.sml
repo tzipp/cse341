@@ -36,6 +36,21 @@ fun number_in_months (dates: (int*int*int) list, months: int list) =
       loop(months, 0)
   end
 
+(* Exercise 4 *)
+(* Takes a list of dates and a month and returns a list of dates containing that month.
+ * Dates are returned in the order provided. *)
+fun dates_in_month (dates: (int*int*int) list, month: int) = 
+  let fun loop(dates: (int*int*int) list, matches: (int*int*int) list) =
+         if null dates
+         then matches
+         else
+              if (#2 (hd dates)) = month
+              then loop(tl dates, (hd dates)::matches)
+              else loop(tl dates, matches)
+  in
+     loop(dates, [])    
+  end
+
 (* Exercise 6 *)
 (* Returns the nth string in a list of strings. *)
 fun get_nth (ss: string list, n: int) =
