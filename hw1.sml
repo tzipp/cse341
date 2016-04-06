@@ -144,3 +144,20 @@ fun month_range (day1: int, day2: int) =
     loop(day1, [])
   end
 
+(* Exercise 11 *)
+(* Takes a list of dates and returns the oldest, wrapped in an option. *)
+(* SOME if there's an oldest date. NONE if the list has no dates. *)
+
+
+(* Exercise 12 *)
+(* Takes a list of numbers and returns a list of their partial sums. *)
+fun cumulative_sum (xs: int list) =
+  let fun loop(sum: int, xs: int list, partials: int list) =
+    if null xs
+    then reverse partials
+    else
+        loop(sum + (hd xs), tl xs, (sum + (hd xs)) :: partials)
+  in
+    loop(0, xs, [])
+  end
+
