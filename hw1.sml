@@ -116,6 +116,14 @@ fun number_before_reaching_sum (sum: int, xs: int list) =
     loop(0, 1, xs)
   end
 
+fun get_month (n: int) =
+  let val month_names = ["January", "February", "March", "April", "May", "June",
+                   "July", "August", "September", "October", "November", "December"]
+
+  in    
+     get_nth(month_names, n)
+  end
+
 (* Exercise 9 *)
 (* Given a day of the year, return the month *)
 fun what_month (day: int) = true
