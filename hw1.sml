@@ -108,7 +108,7 @@ fun date_to_string (date: (int*int*int)) =
 * threshold *)
 fun number_before_reaching_sum (sum: int, xs: int list) =
   let fun loop(sum_so_far: int, n: int, xs: int list) =
-    if sum_so_far > sum
+    if sum_so_far + (hd xs) >= sum
     then n-1
     else
          loop(sum_so_far + (hd xs), n+1, tl xs)
@@ -126,4 +126,9 @@ fun get_month (n: int) =
 
 (* Exercise 9 *)
 (* Given a day of the year, return the month *)
-fun what_month (day: int) = true
+fun what_month (day: int) =
+  let val days_per_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  in
+    number_before_reaching_sum(day, days_per_month) + 1
+  end
+ 
