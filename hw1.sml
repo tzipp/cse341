@@ -101,3 +101,18 @@ fun date_to_string (date: (int*int*int)) =
       date)
   in date_str
   end
+
+(* Exercise 8 *)
+(* Returns the index n at which the sum of the first n numbers is less
+* than a provided threshold, and the sum of the n+1 elements exceed the
+* threshold *)
+fun number_before_reaching_sum (sum: int, xs: int list) =
+  let fun loop(sum_so_far: int, n: int, xs: int list) =
+    if sum_so_far > sum
+    then n-1
+    else
+         loop(sum_so_far + (hd xs), n+1, tl xs)
+  in
+    loop(0, 1, xs)
+  end
+
