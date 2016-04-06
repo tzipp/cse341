@@ -53,13 +53,26 @@ fun reverse(lst: 'a list) =
 fun dates_in_month (dates: (int*int*int) list, month: int) = 
   let fun loop(dates: (int*int*int) list, matches: (int*int*int) list) =
          if null dates
-         then matches
+         then reverse matches
          else
               if (#2 (hd dates)) = month
               then loop(tl dates, (hd dates)::matches)
               else loop(tl dates, matches)
   in
      loop(dates, [])    
+  end
+
+(* Exercise 5 *)
+(* Takes a list of dates and a list of months and returns a list of dates
+* corresponding to those months, in order provided. *)
+fun dates_in_months(dates: (int*int*int) list, months: int list) =
+  let fun loop(months: int list, matches: (int*int*int) list) =
+    if null months
+    then matches
+    else
+        loop(tl months, matches @ dates_in_month(dates, hd months))
+  in
+    loop(months, [])
   end
 
 (* Exercise 6 *)
