@@ -49,8 +49,8 @@ fun reverse(lst: 'a list) =
 
 (* Exercise 4 *)
 (* Takes a list of dates and a month and returns a list of dates containing that month.
- * Dates are returned in the order provided. *) 
-fun dates_in_month (dates: (int*int*int) list, month: int) = 
+ * Dates are returned in the order provided. *)
+fun dates_in_month (dates: (int*int*int) list, month: int) =
   let fun loop(dates: (int*int*int) list, matches: (int*int*int) list) =
          if null dates
          then reverse matches
@@ -59,7 +59,7 @@ fun dates_in_month (dates: (int*int*int) list, month: int) =
               then loop(tl dates, (hd dates)::matches)
               else loop(tl dates, matches)
   in
-     loop(dates, [])    
+     loop(dates, [])
   end
 
 (* Exercise 5 *)
@@ -120,7 +120,7 @@ fun get_month (n: int) =
   let val month_names = ["January", "February", "March", "April", "May", "June",
                    "July", "August", "September", "October", "November", "December"]
 
-  in    
+  in
      get_nth(month_names, n)
   end
 
@@ -131,4 +131,16 @@ fun what_month (day: int) =
   in
     number_before_reaching_sum(day, days_per_month) + 1
   end
- 
+
+(* Exercise 10 *)
+(* Returns a list of months for each day between two provided days *)
+fun month_range (day1: int, day2: int) =
+  let fun loop(day: int, months: int list) =
+    if day > day2
+    then reverse months
+    else
+        loop(day+1, what_month(day)::months)
+  in
+    loop(day1, [])
+  end
+
