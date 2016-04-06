@@ -147,7 +147,8 @@ fun month_range (day1: int, day2: int) =
 (* Exercise 11 *)
 (* Takes a list of dates and returns the oldest, wrapped in an option. *)
 (* SOME if there's an oldest date. NONE if the list has no dates. *)
-
+fun oldest (dates: (int*int*int) list) =
+  true
 
 (* Exercise 12 *)
 (* Takes a list of numbers and returns a list of their partial sums. *)
