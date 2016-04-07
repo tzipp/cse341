@@ -148,7 +148,22 @@ fun month_range (day1: int, day2: int) =
 (* Takes a list of dates and returns the oldest, wrapped in an option. *)
 (* SOME if there's an oldest date. NONE if the list has no dates. *)
 fun oldest (dates: (int*int*int) list) =
-  true
+  if null dates
+  then NONE
+  else
+      let fun loop(dates: (int*int*int) list) =
+        if null (tl dates)
+        then hd dates
+        else
+          let val tl_ans = loop(tl dates)
+          in
+             if is_older(hd dates, tl_ans)
+             then hd dates
+             else tl_ans
+          end
+      in
+        SOME(loop dates)
+      end
 
 (* Exercise 12 *)
 (* Takes a list of numbers and returns a list of their partial sums. *)
