@@ -9,3 +9,11 @@ fun f x =
        | Str s => String.size s
 
 
+datatype ioption = Some of int
+                 | None
+
+fun getOrElse (opt: ioption, x: int) =
+  case opt of
+       Some(i) => i
+     | None => x
+
