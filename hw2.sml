@@ -26,6 +26,14 @@ fun contains (s, ss) =
                   then true
                   else contains (s, ss')
 
+fun contains2 (s, ss) =
+  let val result = find_option(s, ss)
+  in
+    case result of
+         NONE     => false
+       | SOME (n) => true
+  end
+
 fun remove (s, ss) =
   case ss of
        []       => []
