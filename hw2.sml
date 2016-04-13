@@ -36,14 +36,20 @@ fun remove (s, ss) =
         else
           s'::remove(s, ss')
 
+fun remove_option (s, ss) =
+  if contains (s, ss)
+  then SOME(remove (s,ss))
+  else
+    NONE
+
 (* you may assume that Num is always used with values 2, 3, ..., 10
    though it will not really come up *)
 datatype suit = Clubs | Diamonds | Hearts | Spades
-datatype rank = Jack | Queen | King | Ace | Num of int 
+datatype rank = Jack | Queen | King | Ace | Num of int
 type card = rank * suit
 
 datatype color = Red | Black
-datatype move = Discard of card | Draw 
+datatype move = Discard of card | Draw
 
 exception IllegalMove
 
