@@ -50,6 +50,17 @@ fun remove_option (s, ss) =
   else
     NONE
 
+fun all_substitutions1 (ssl: string list list, s: string) =
+  case ssl of
+       []      => []
+     | ss::ssl' =>
+                 let val removal = remove_option(s, ss)
+                 in
+                   case removal of
+                        NONE => all_substitutions1(ssl', s)
+                      | SOME(s'::ss') => s'::ss' @ all_substitutions1(ssl', s)
+                 end
+
 (* you may assume that Num is always used with values 2, 3, ..., 10
    though it will not really come up *)
 datatype suit = Clubs | Diamonds | Hearts | Spades
