@@ -11,4 +11,11 @@ fun concat (first: string, last: string) =
 
 val fullNames = map(concat, names)
 
+(* Filter *)
+fun filter (f, xs) =
+  case xs of
+       [] => []
+     | x::xs' => if f x
+                 then x::(filter(f, xs'))
+                 else filter(f, xs')
 
